@@ -11,7 +11,6 @@ import UIKit
 class ConverterViewController: UIViewController {
     
     @IBOutlet weak var outputDisplay: UITextField!
-       
     @IBOutlet weak var inputDisplay: UITextField!
     
     var rightInputLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 50,height: 0))
@@ -35,6 +34,9 @@ class ConverterViewController: UIViewController {
         super.viewDidLoad()
         
         let initialIndex: Int = 0
+        
+        inputDisplay.text = ""
+        outputDisplay.text = ""
     
         rightInputLabel.text = converterArray[initialIndex].inputUnit
         rightInputLabel.font = UIFont.systemFont(ofSize: 40.0)
@@ -63,7 +65,9 @@ class ConverterViewController: UIViewController {
                 self.rightInputLabel.sizeToFit()
                 self.rightOutputLabel.text = self.converterArray[0].outputUnit
                 self.rightOutputLabel.sizeToFit()
-                self.outputDisplay.text = String((self.inputNumber-32)*5/9)
+                if(self.inputDisplay.text != ""){
+                    self.outputDisplay.text = String((self.inputNumber-32)*5/9)
+                }
             }))
             alert.addAction(UIAlertAction(title: converterArray[1].label, style: UIAlertAction.Style.default, handler: {
                 (alertAction) -> Void in
@@ -74,7 +78,9 @@ class ConverterViewController: UIViewController {
                 self.rightInputLabel.sizeToFit()
                 self.rightOutputLabel.text = self.converterArray[1].outputUnit
                 self.rightOutputLabel.sizeToFit()
-                self.outputDisplay.text = String(self.inputNumber*9/5+32)
+                if(self.inputDisplay.text != ""){
+                    self.outputDisplay.text = String(self.inputNumber*9/5+32)
+                }
             }))
         
             alert.addAction(UIAlertAction(title: converterArray[2].label, style: UIAlertAction.Style.default, handler: {
@@ -86,7 +92,9 @@ class ConverterViewController: UIViewController {
                 self.rightInputLabel.sizeToFit()
                 self.rightOutputLabel.text = self.converterArray[2].outputUnit
                 self.rightOutputLabel.sizeToFit()
-                self.outputDisplay.text = String(self.inputNumber*1.60934)
+                if(self.inputDisplay.text != ""){
+                    self.outputDisplay.text = String(self.inputNumber*1.60934)
+                }
             }))
         
             alert.addAction(UIAlertAction(title: converterArray[3].label, style: UIAlertAction.Style.default, handler: {
@@ -98,7 +106,9 @@ class ConverterViewController: UIViewController {
                 self.rightInputLabel.sizeToFit()
                 self.rightOutputLabel.text = self.converterArray[3].outputUnit
                 self.rightOutputLabel.sizeToFit()
-                self.outputDisplay.text = String(self.inputNumber*0.621371)
+                if(self.inputDisplay.text != ""){
+                    self.outputDisplay.text = String(self.inputNumber*0.621371)
+                }
             }))
             self.present(alert, animated: true, completion: nil)
         }
